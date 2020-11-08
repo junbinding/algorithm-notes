@@ -26,6 +26,7 @@ class Solution:
             if val <= lower or val >= upper:
                 return False
 
+            # 右子树最小值是当前值
             if not helper(node.right, val, upper):
                 return False
 
