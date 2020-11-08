@@ -7,11 +7,10 @@ class Node:
 
 class Solution:
     """
-    590. N叉树的后序遍历
-    https://leetcode-cn.com/problems/n-ary-tree-postorder-traversal/
-    给定一个 N 叉树，返回其节点值的后序遍历。
+    589. N叉树的前序遍历
+    https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal/description/
+    给定一个 N 叉树，返回其节点值的前序遍历。
     """
-    # 迭代
     def preorder(self, root: Node) -> List[int]:
         if not root:
             return []
@@ -23,25 +22,24 @@ class Solution:
             if root:
                 res.append(root.val)
 
-            for c in range(len(root.children)):
-                stack.append(root.children[len(root.children) - c - 1])
+            for c in root.children:
+                stack.append(c)
 
         return res
 
-
     # 递归
-    def postorderByRecursive(self, root: Node) -> List[int]:
+    def preorderByRecursive(self, root: Node) -> List[int]:
         res = []
-        def post_order(node):
+        def pre_order(node):
             if not node:
                 return None
 
-            for i in node.children:
-                post_order(i)
-
             res.append(node.val)
+            for i in node.children:
+                pre_order(i)
 
-        post_order(root)
+
+        pre_order(root)
         return res
 
 
