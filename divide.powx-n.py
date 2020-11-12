@@ -1,4 +1,9 @@
 class Solution:
+    """
+    50. Pow(x, n)
+    https://leetcode-cn.com/problems/powx-n/
+    实现 pow(x, n) ，即计算 x 的 n 次幂函数。
+    """
     def myPow(self, x: float, n: int) -> float:
         return self.mul(x, n) if n >=0 else 1.0 / self.mul(x, -n)
 
