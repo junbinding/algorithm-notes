@@ -7,6 +7,14 @@ class Solution:
     问总共有多少条不同的路径？
     """
     def uniquePaths(self, m: int, n: int) -> int:
+        cur = [1] * n
+        for i in range(1, m):
+            for j in range(1, n):
+                cur[j] += cur[j - 1]
+                print('curr', i + 1, j + 1, cur[j-1], cur[j])
+        return cur[-1]
+
+    def uniquePathsByArr(self, m: int, n: int) -> int:
         # 生成缓存数组
         dp = [[1] * n] + [[1] + [0] * (n - 1) for _ in range(m - 1)]
         print(dp)
