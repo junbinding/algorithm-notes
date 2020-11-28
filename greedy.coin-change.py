@@ -10,6 +10,23 @@ class Solution:
     你可以认为每种硬币的数量是无限的。
     """
     def coinChange(self, coins: List[int], amount: int) -> int:
+        dp = [amount + 1] * (amount + 1)
+        dp[0] = 0
+
+        # 从 1 遍历到 amount
+        for i in range(1, amount + 1):
+            for coin in coins:
+                # 如果当前面额大于当前的硬币，并且扣除了当前硬币后，仍有值
+                if i - coin >= 0 and dp[i - coin] != amount + 1:
+                    # 定义状态方程
+                    dp[i] = min(dp[i], 1 + dp[i - coin])
+
+        if dp[amount] == amount + 1:
+            dp[amount] = -1
+
+        return dp[amount]
+
+    def coinChangeByGreedy(self, coins: List[int], amount: int) -> int:
         if amount == 0:
             return 0
 
