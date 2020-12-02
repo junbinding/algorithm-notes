@@ -17,10 +17,7 @@ class Trie:
         """
         tree = self.lookup
         for a in word:
-            if a not in tree:
-                tree[a] = {}
-
-            tree = tree[a]
+            tree = tree.setdefault(a, {})
         tree['#'] = '#'
 
 
@@ -30,10 +27,7 @@ class Trie:
         """
         tree = self.lookup
         for a in word:
-            if a not in tree:
-                return False
-
-            tree = tree[a]
+            tree = tree.setdefault(a, {})
 
         if '#' in tree:
             return True
@@ -47,11 +41,7 @@ class Trie:
         """
         tree = self.lookup
         for a in prefix:
-            if a not in tree:
-                return False
-
-            tree = tree[a]
-
+            tree = tree.setdefault(a, {})
         return True
 
 
