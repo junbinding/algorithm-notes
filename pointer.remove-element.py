@@ -10,10 +10,13 @@ class Solution:
     元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。
     """
     def removeElement(self, nums: List[int], val: int) -> int:
+        # 定义快指针：标识循环元素的位置
         a = 0
+        # 定义慢指针：标识非 val 值的元素位置
         b = 0
 
         while a < len(nums):
+            # 如果非 val，则进行赋值
             if nums[a] != val:
                 nums[b] = nums[a]
                 b += 1
