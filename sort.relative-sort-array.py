@@ -18,6 +18,8 @@ class Solution:
                 if i == arr1[j]:
                     arr1[cur], arr1[j] = arr1[j], arr1[cur]
                     cur += 1
+
+        # 快排
         self.sortRange(arr1, cur, len(arr1) - 1)
         return arr1
 
