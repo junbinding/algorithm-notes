@@ -19,4 +19,5 @@ class Solution:
 
 
 so = Solution()
-print(so.firstUniqChar('loveleetcode'))
+print(so.firstUniqChar('cc'))
+print('cc'.rfind('c'))
