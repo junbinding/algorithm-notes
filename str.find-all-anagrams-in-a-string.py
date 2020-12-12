@@ -3,7 +3,7 @@ from typing import List
 class Solution:
     """
     438. 找到字符串中所有字母异位词
-    https://leetcode-cn.com/problems/strstr/
+    https://leetcode-cn.com/problems/find-all-anagrams-in-a-string/
     给定一个字符串 s 和一个非空字符串 p，找到 s 中所有是 p 的字母异位词的子串，返回这些子串的起始索引。
     字符串只包含小写英文字母，并且字符串 s 和 p 的长度都不超过 20100。
     说明：
@@ -44,6 +44,7 @@ class Solution:
                 right += 1
         return res
 
+    # 暴力简单
     def findAnagramsByForce(self, s: str, p: str) -> List[int]:
         res = []
         p_str = ''.join(sorted(p))
@@ -53,9 +54,7 @@ class Solution:
             tmp = s[i:i+window]
             if ''.join(sorted(tmp)) == p_str:
                 res.append(i)
-
             i += 1
-
         return res
 
 
