@@ -42,18 +42,15 @@ class Solution:
                     # 窗口向右移
                     left += 1
                 right += 1
-
         return res
 
     def findAnagramsByForce(self, s: str, p: str) -> List[int]:
-        # 通过滑动窗口解决问题
         res = []
         p_str = ''.join(sorted(p))
-        win = len(p)
-        l = len(s)
+        window, length = len(p), len(s)
         i = 0
-        while i <= l - win:
-            tmp = s[i:i+win]
+        while i <= length - window:
+            tmp = s[i:i+window]
             if ''.join(sorted(tmp)) == p_str:
                 res.append(i)
 
