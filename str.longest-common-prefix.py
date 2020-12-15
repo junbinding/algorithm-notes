@@ -8,6 +8,29 @@ class Solution:
     如果不存在公共前缀，返回空字符串 ""。
     """
     def longestCommonPrefix(self, strs: List[str]) -> str:
+        if not strs: return ""
+        str0 = min(strs)
+        str1 = max(strs)
+        print(str0, str1)
+        for i in range(len(str0)):
+            if str0[i] != str1[i]:
+                return str0[:i]
+        return str0
+
+    def longestCommonPrefixByFind(self, strs: List[str]) -> str:
+        if not strs:
+            return ''
+
+        pre = strs[0]
+        # 遍历数组
+        for i in range(1, len(strs)):
+            while strs[i].find(pre) != 0:
+                if len(pre) == 0:
+                    return ''
+                pre = pre[:-1]
+        return pre
+
+    def longestCommonPrefixByForce(self, strs: List[str]) -> str:
         if not strs:
             return ''
 
@@ -27,4 +50,4 @@ class Solution:
 
 
 so = Solution()
-print(so.longestCommonPrefix(["flower","flow","flight"]))
+print(so.longestCommonPrefix(["flower","flew","fleght"]))
