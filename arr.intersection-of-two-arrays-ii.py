@@ -10,6 +10,20 @@ class Solution:
     def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
         # 循环遍历
         res = []
+        tmp = {}
+        for i in nums1:
+            tmp[i] = tmp.get(i, 0) + 1
+
+        for j in nums2:
+            if j in tmp.keys() and tmp[j] > 0:
+                res.append(j)
+                tmp[j] -= 1
+
+        return res
+
+    def intersectByForce(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        # 循环遍历
+        res = []
         for a in nums1:
             if not nums2:
                 break
