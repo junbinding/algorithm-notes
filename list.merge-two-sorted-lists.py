@@ -10,8 +10,35 @@ class Solution:
     https://leetcode-cn.com/problems/merge-two-sorted-lists/
     将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
     """
-    # 递归
     def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+        if not l1:
+            return l2
+
+        if not l2:
+            return l1
+
+        res = ListNode()
+        pre = res
+        while l1 and l2:
+            if l1.val > l2.val:
+                pre.next = l2
+                l2 = l2.next
+            else:
+                pre.next = l1
+                l1 = l1.next
+
+            pre = pre.next
+
+        if l1:
+            pre.next = l1
+
+        if l2:
+            pre.next = l2
+
+        return res.next
+
+    # 递归
+    def mergeTwoListsByRecursive(self, l1: ListNode, l2: ListNode) -> ListNode:
         if not l1:
             return l2
 
