@@ -7,14 +7,13 @@ class Solution:
     def firstUniqChar(self, s: str) -> int:
         res = {}
         for i in range(len(s)):
-            if s[i] not in res:
-                res[s[i]] = [i, 1]
-            else:
-                res[s[i]][1] += 1
+            res[s[i]] = i
 
-        for i in res:
-            if res[i][1] == 1:
-                return res[i][0]
+        for i in range(len(s)):
+            if res[s[i]] == i:
+                return i
+            else:
+                res[s[i]] = -1
         return -1
 
 
