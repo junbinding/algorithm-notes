@@ -15,9 +15,9 @@ class Solution:
         while l < r:
             mid = l + (r - l) // 2
             # 左侧是单调的，旋转发生在右侧
-            if nums[r] < nums[mid]:
+            if nums[mid] > nums[r]:
                 l = mid + 1
-            elif nums[r] > nums[mid]:
+            elif nums[mid] < nums[r]:
                 r = mid
             else:
                 r -= 1
